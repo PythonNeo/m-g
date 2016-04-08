@@ -7,9 +7,16 @@ import socket
 import struct
 import sys
 import time
+import json
 
-message = 'data worth repeating'
 multicast_group = ('224.3.29.71', 10000)
+
+values = {'hostname': 'my new nickname is Rambo', 
+	'resolution':['1920x480'], 
+	'capabibility': ['png']}
+
+message = json.dumps( values, sort_keys=True, indent=4, separators=(',', ': '))
+
 
 # Create the datagram socket
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
